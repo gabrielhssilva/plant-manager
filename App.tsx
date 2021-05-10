@@ -6,8 +6,7 @@ import {
 } from "@expo-google-fonts/jost";
 import AppLoading from "expo-app-loading";
 
-import { Welcome } from "./src/pages/Welcome";
-import { UserIdentification } from "./src/pages/UserIdentification";
+import Routes from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,7 +17,6 @@ export default function App() {
   if (!fontsLoaded) return <AppLoading />;
 
   return (
-    <Welcome />
-    // <UserIdentification/>
+    <Routes/>
   );
 }
