@@ -9,6 +9,7 @@ import {
   Dimensions,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
@@ -16,6 +17,12 @@ import fonts from "../styles/fonts";
 import wateringImg from "../assets/watering.png";
 
 export function Welcome() {
+  const navigation = useNavigation();
+
+  function handleStart() {
+    navigation.navigate("UserIdentification");
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
@@ -32,7 +39,11 @@ export function Welcome() {
           sempre que precisar.
         </Text>
 
-        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.7}
+          onPress={handleStart}
+        >
           <Feather name="chevron-right" style={styles.buttonIcon} />
         </TouchableOpacity>
       </View>
@@ -49,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
-    padding: 20
+    padding: 20,
   },
   title: {
     fontSize: 28,
