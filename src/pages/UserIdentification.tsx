@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 50,
     padding: 10,
+    paddingHorizontal: 50,
     textAlign: "center",
   },
   inputFocused: {
