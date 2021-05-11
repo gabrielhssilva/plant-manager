@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { CustomButton } from "../components/CustomButton";
@@ -5,6 +6,12 @@ import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 export function Confirmation() {
+  const navigation = useNavigation();
+
+  function handleStart() {
+    navigation.navigate("PlantSelect");
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -14,7 +21,7 @@ export function Confirmation() {
           Agora vamos começar a cuidar das suas plantinhas com muito cuidado.
         </Text>
         <View style={styles.footer}>
-          <CustomButton title="Continuar" />
+          <CustomButton onPress={handleStart} title="Continuar" />
         </View>
       </View>
     </SafeAreaView>

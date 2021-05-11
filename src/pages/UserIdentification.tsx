@@ -16,17 +16,16 @@ import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-
 export function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
 
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    function handleStart() {
-      navigation.navigate("Confirmation");
-    }
+  function handleStart() {
+    navigation.navigate("Confirmation");
+  }
 
   function handleInputBlur() {
     setIsFocused(false);
@@ -49,29 +48,30 @@ export function UserIdentification() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-        <View style={styles.content}>
-          <View style={styles.form}>
-            <View style={styles.header}>
-              <Text style={styles.emoji}>{isFilled ? "😁" : "😄"}</Text>
-              <Text style={styles.title}>Como podemos {"\n"} chamar você?</Text>
-            </View>
-            <TextInput
-              placeholder="Digite seu nome"
-              style={[
-                styles.textInput,
-                (isFocused || isFilled) && styles.inputFocused,
-              ]}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              onChangeText={handleInputChange}
+          <View style={styles.content}>
+            <View style={styles.form}>
+              <View style={styles.header}>
+                <Text style={styles.emoji}>{isFilled ? "😁" : "😄"}</Text>
+                <Text style={styles.title}>
+                  Como podemos {"\n"} chamar você?
+                </Text>
+              </View>
+              <TextInput
+                placeholder="Digite seu nome"
+                style={[
+                  styles.textInput,
+                  (isFocused || isFilled) && styles.inputFocused,
+                ]}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                onChangeText={handleInputChange}
               />
-            <View style={styles.footer}>
-              <CustomButton onPress={handleStart} title="Confirmar" />
+              <View style={styles.footer}>
+                <CustomButton onPress={handleStart} title="Confirmar" />
+              </View>
             </View>
           </View>
-        </View>
-</TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
