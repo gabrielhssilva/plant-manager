@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -10,6 +11,7 @@ import {
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { CustomButton } from "../components/CustomButton";
 import colors from "../styles/colors";
@@ -23,7 +25,12 @@ export function UserIdentification() {
 
   const navigation = useNavigation();
 
-  function handleStart() {
+  async function handleStart() {
+    if(!name) {
+      return Alert.alert('Me diz como posso chamar você? 😢')
+    }
+
+    await AsyncStorage.setItem("@plantmanager:user", name);
     navigation.navigate("Confirmation");
   }
 
